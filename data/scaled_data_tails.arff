@@ -1,0 +1,13 @@
+@relation R_data_frame
+
+@attribute APL numeric
+@attribute thickness numeric
+@attribute bending numeric
+@attribute tilt numeric
+@attribute zorder numeric
+@attribute compress numeric
+@attribute tails {DI,DO,DP,PI,PO}
+
+@data
+0.64741,0.298381,0.078908,0.036118,0.164091,0.042624,?
+0.668535,0.283141,0.079389,0.034081,0.160308,0.04289,?
