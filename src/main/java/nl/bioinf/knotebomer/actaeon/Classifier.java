@@ -86,7 +86,7 @@ public class Classifier {
             //String clsLabelSterolConcentration = instances.classAttribute().value((int)labelSterolConcentration);
             labeled.instance(i).setClassValue(labelSterolConcentration);
         }
-        System.out.println(labeled);
+        //System.out.println(labeled);
         return labeled;
     }
 }
