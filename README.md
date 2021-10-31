@@ -8,7 +8,7 @@ and then predicts certain membrane components using machine learning algorithms.
 - [Installation](#installation)
     * [Prerequisites](#prerequisites)
     * [Dependencies](#dependencies)
-- [Input file specifications](#Input file specifications)
+- [Input file specifications](#Input-file-specifications)
 - [Arguments](#arguments)
 - [Contact](#contact)
 
