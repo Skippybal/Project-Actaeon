@@ -1,6 +1,7 @@
 package nl.bioinf.knotebomer.actaeon;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public interface OptionProvider {
     String getFilePath();
@@ -8,5 +9,5 @@ public interface OptionProvider {
     String getInputFileExtention();
     String getOutputFileExtention();
     Boolean getPrintToCMD();
-    HashMap<String, Double> getCharacteristics();
+    Map<String, Double> getCharacteristics();
 }
