@@ -8,6 +8,7 @@ and then predicts certain membrane components using machine learning algorithms.
 - [Installation](#installation)
     * [Prerequisites](#prerequisites)
     * [Dependencies](#dependencies)
+- [Input file specifications](#Input file specifications)
 - [Arguments](#arguments)
 - [Contact](#contact)
 
@@ -59,6 +60,28 @@ but now also to the command line
 * Options p and h both dont need a value, they are just given like -p and -h without a value
 
 
+## Input file specifications
+The input file needs to be either ``.csv`` or ``.arff``. **The order of the columns is important.**
+
+In the case of ``.csv`` the file must contain the following columns, in this specific order:
+```
+* APL
+* thickness
+* bending
+* tilt
+* zorder
+* compress
+```
+
+In the case of ``.arff`` the file must contain the following attributes, in this specific order:
+```
+* @attribute APL numeric
+* @attribute thickness numeric
+* @attribute bending numeric 
+* @attribute tilt numeric 
+* @attribute zorder numeric 
+* @attribute compress numeric
+```
 
 ## Contact
 
