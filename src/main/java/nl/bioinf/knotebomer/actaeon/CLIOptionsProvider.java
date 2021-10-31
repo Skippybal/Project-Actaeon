@@ -4,6 +4,7 @@ import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CLIOptionsProvider implements OptionProvider{
     private Options options;
@@ -11,7 +12,7 @@ public class CLIOptionsProvider implements OptionProvider{
     private String filePath;
     private String outPath = "data/output.csv";
     private Boolean printToCommandLine = false;
-    private HashMap<String, Double> input;
+    private final Map<String, Double> input = new HashMap<>();
 
     public CLIOptionsProvider(String[] args){
         init();
@@ -88,21 +89,26 @@ public class CLIOptionsProvider implements OptionProvider{
         } else if (cmd.hasOption('a') & cmd.hasOption('t')
                 & cmd.hasOption('b') & cmd.hasOption('i')
                 & cmd.hasOption('z') & cmd.hasOption('c')){
-
             try {
-                final String aplStr = cmd.getOptionValue('a');
-                final String thicknessStr = cmd.getOptionValue('t');
-                final String bendingStr = cmd.getOptionValue('b');
-                final String tiltStr = cmd.getOptionValue('i');
-                final String zorederStr = cmd.getOptionValue('z');
-                final String comperssibilityStr = cmd.getOptionValue('c');
+                //ystem.out.println(Double.parseDouble(cmd.getOptionValue('a').replace(",", ".")));
 
-                double apl = Double.parseDouble(aplStr);
-                double thickness = Double.parseDouble(thicknessStr);
-                double bending = Double.parseDouble(bendingStr);
-                double tilt = Double.parseDouble(tiltStr);
-                double zorder = Double.parseDouble(zorederStr);
-                double compressibility = Double.parseDouble(comperssibilityStr);
+//                String aplStr = cmd.getOptionValue('a').replace(",", ".");
+//                String thicknessStr = cmd.getOptionValue('t').replace(",", ".");
+//                String bendingStr = cmd.getOptionValue('b').replace(",", ".");
+//                String tiltStr = cmd.getOptionValue('i').replace(",", ".");
+//                String zorederStr = cmd.getOptionValue('z').replace(",", ".");
+//                String comperssibilityStr = cmd.getOptionValue('c').replace(",", ".");
+
+                //System.out.println(Double.parseDouble(cmd.getOptionValue('a')));
+                //System.out.println("g");
+
+
+                double apl = Double.parseDouble(cmd.getOptionValue('a').replace(",", "."));
+                double thickness =Double.parseDouble(cmd.getOptionValue('t').replace(",", "."));
+                double bending = Double.parseDouble(cmd.getOptionValue('b').replace(",", "."));
+                double tilt = Double.parseDouble(cmd.getOptionValue('i').replace(",", "."));
+                double zorder =Double.parseDouble(cmd.getOptionValue('z').replace(",", "."));
+                double compressibility = Double.parseDouble(cmd.getOptionValue('c').replace(",", "."));
 
                 if (apl < 0) {
                     throw new ParseException("Number is below zero: " + apl);
@@ -167,7 +173,7 @@ public class CLIOptionsProvider implements OptionProvider{
     }
 
     @Override
-    public HashMap<String, Double> getCharacteristics() {
+    public Map<String, Double> getCharacteristics() {
         return input;
     }
 }
