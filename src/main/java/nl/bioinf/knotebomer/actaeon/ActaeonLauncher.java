@@ -45,7 +45,7 @@ public class ActaeonLauncher {
                 }
 
                 //assert inputHandler != null;
-                System.out.println(inputFile);
+                //System.out.println(inputFile);
                 instances = inputHandler.readFile(inputFile);
             } else if (optionProvider.getCharacteristics() != null){
                     CMDHandler cmdHandler = new CMDHandler();
@@ -70,7 +70,7 @@ public class ActaeonLauncher {
                 } else {
                     outputHandler = new ArffHandler();
                 }
-                System.out.println(outFile);
+                //System.out.println(outFile);
                 outputHandler.writeFile(labeled, optionProvider.getOutputFile());
             }
         } catch (Exception e){

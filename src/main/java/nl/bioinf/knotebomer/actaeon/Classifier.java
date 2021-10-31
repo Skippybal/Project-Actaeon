@@ -60,6 +60,16 @@ public class Classifier {
         sterolConcentrationValues.add("30");
         Attribute sterolConcentration = new Attribute("sterol.conc", sterolConcentrationValues);
 
+        MinMax minMax = new MinMax();
+        Instances scaledData = minMax.minMaxer(instances);
+
+        Instances scaledDataLMT = new Instances(scaledData);
+        scaledDataLMT.insertAttributeAt(sterolConcentration, scaledDataLMT.numAttributes());
+        scaledDataLMT.setClassIndex(scaledDataLMT.numAttributes() - 1);
+
+        scaledData.insertAttributeAt(sterolPresent, scaledData.numAttributes());
+        scaledData.insertAttributeAt(tails, scaledData.numAttributes());
+        scaledData.insertAttributeAt(sterolConcentration, scaledData.numAttributes());
 
         Instances labeled = new Instances(instances);
 
@@ -67,26 +77,25 @@ public class Classifier {
         labeled.insertAttributeAt(tails, labeled.numAttributes());
         labeled.insertAttributeAt(sterolConcentration, labeled.numAttributes());
 
-        instances.insertAttributeAt(sterolConcentration, instances.numAttributes());
-        instances.setClassIndex(instances.numAttributes() - 1);
-
-        for (int i = 0; i < instances.numInstances(); i++) {
+        for (int i = 0; i < labeled.numInstances(); i++) {
             labeled.setClassIndex(labeled.numAttributes() - 3);
-            double labelSterolPresent = sterolPresentModel.classifyInstance(labeled.instance(i));
+            scaledData.setClassIndex(scaledData.numAttributes() - 3);
+            double labelSterolPresent = sterolPresentModel.classifyInstance(scaledData.instance(i));
             //String clsLabelSterolPresent = labeled.classAttribute().value((int)labelSterolPresent);
             labeled.instance(i).setClassValue(labelSterolPresent);
 
             labeled.setClassIndex(labeled.numAttributes() - 2);
-            double labelTails = tailClassifierModel.classifyInstance(labeled.instance(i));
+            scaledData.setClassIndex(scaledData.numAttributes() - 2);
+            double labelTails = tailClassifierModel.classifyInstance(scaledData.instance(i));
             //String clsLabelTails = labeled.classAttribute().value((int)labelTails);
             labeled.instance(i).setClassValue(labelTails);
 
             labeled.setClassIndex(labeled.numAttributes() - 1);
-            double labelSterolConcentration = sterolConcentrationModel.classifyInstance(instances.instance(i));
+            double labelSterolConcentration = sterolConcentrationModel.classifyInstance(scaledDataLMT.instance(i));
             //String clsLabelSterolConcentration = instances.classAttribute().value((int)labelSterolConcentration);
             labeled.instance(i).setClassValue(labelSterolConcentration);
         }
-        //System.out.println(labeled);
+        System.out.println(labeled);
         return labeled;
     }
 }
