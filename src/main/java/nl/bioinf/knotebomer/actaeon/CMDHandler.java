@@ -8,10 +8,11 @@ import weka.core.Instances;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
-public class CMDHandler implements  FileHandler<HashMap<String, Double>, String>{
+public class CMDHandler implements  FileHandler<Map<String, Double>, String>{
     @Override
-    public Instances readFile(HashMap<String, Double> input) {
+    public Instances readFile(Map<String, Double> input) {
         ArrayList<Attribute> atts = new ArrayList<>(2);
         atts.add(new Attribute("APL"));
         atts.add(new Attribute("thickness"));
