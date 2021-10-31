@@ -1,13 +1,12 @@
 package nl.bioinf.knotebomer.actaeon;
 
+import java.util.HashMap;
+
 public interface OptionProvider {
-    String getFileName();
-    String getInputType();
-    String getOutputFIle();
-    double getAPL();
-    double getThickness();
-    double getBinding();
-    double getTilt();
-    double getZorder();
-    double getCompressibility();
+    String getFilePath();
+    String getOutputFile();
+    String getInputFileExtention();
+    String getOutputFileExtention();
+    Boolean getPrintToCMD();
+    HashMap<String, Double> getCharacteristics();
 }
