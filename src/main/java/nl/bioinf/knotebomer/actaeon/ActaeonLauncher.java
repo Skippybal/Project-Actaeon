@@ -9,18 +9,7 @@ import java.util.HashMap;
 
 public class ActaeonLauncher {
     public static void main(String[] args) {
-        // TODO
-//        try{
-//        CSVHandler file = new CSVHandler();
-//        Instances instances = file.readFile("data/clean_data.csv");
-//        // System.out.println(instances);
-//
-//        Classifier classifier = new Classifier();
-//        Instances labeled = classifier.classifyInstances(instances);
-//        // System.out.println(labeled);
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
+
         ActaeonLauncher launcher = new ActaeonLauncher();
         OptionProvider optionProvider = new CLIOptionsProvider(args);
         launcher.start(optionProvider);
@@ -29,8 +18,8 @@ public class ActaeonLauncher {
 
 
     /**
-     *
-     * @param optionProvider
+     * Start the program
+     * @param optionProvider, provider of options
      */
     void start(OptionProvider optionProvider) {
         try {
@@ -38,9 +27,8 @@ public class ActaeonLauncher {
             String inputFile = optionProvider.getFilePath();
             Boolean printToCommandLine = optionProvider.getPrintToCMD();
             FileHandler<String, String> inputHandler;
-            //System.out.println(optionProvider.getCharacteristics());
+
             if (inputFile != null) {
-                //String fileType = FilenameUtils.getExtension(inputFile);
                 String fileType = optionProvider.getInputFileExtention();
 
                 if (fileType.equals("csv")) {
@@ -49,8 +37,6 @@ public class ActaeonLauncher {
                     inputHandler = new ArffHandler();
                 }
 
-                //assert inputHandler != null;
-                //System.out.println(inputFile);
                 instances = inputHandler.readFile(inputFile);
             } else if (optionProvider.getCharacteristics() != null){
                     CMDHandler cmdHandler = new CMDHandler();
@@ -75,7 +61,6 @@ public class ActaeonLauncher {
                 } else {
                     outputHandler = new ArffHandler();
                 }
-                //System.out.println(outFile);
                 outputHandler.writeFile(labeled, optionProvider.getOutputFile());
             }
         } catch (Exception e){
