@@ -19,6 +19,9 @@ There are two RandomForest models and one LMT model.
 The two RandomForest model predict whether a sterol is present in the membrane and the 
 type of tails in the lipids of the membrane. 
 The LMT model predicts the sterol concentration in the membrane.
+You can find the process of building the models in the following [git repo](https://github.com/Skippybal/Thema9).
+The models use the following membrane characteristics: APL, thickness, bending rigidity,
+tilt angle, z-order and compressibility.
 
 ## Installation
 To install the program, simply pull this repo and use the following 
@@ -62,10 +65,10 @@ java -jar ActaeonLauncher [options]
 * When an input file is specified, command line arguments like the apl and bending rigidity are ignored.
 This is to prevent overwriting issues in the output
 * When no output file is specified, the output is written to data/output.csv
-* When option -p is given, the results will still be written to the outputfile, 
+* When option -p is given, the results will still be written to the output file, 
 but now also to the command line
 * Make sure to use a comma as a separator in doubles on the command line
-* Options p and h both dont need a value, they are just given like -p and -h without a value
+* Options p and h both don't need a value, they are just given like -p and -h without a value
 
 
 ## Input file specifications
