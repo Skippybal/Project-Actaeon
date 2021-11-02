@@ -67,7 +67,6 @@ This is to prevent overwriting issues in the output
 * When no output file is specified, the output is written to data/output.csv
 * When option -p is given, the results will still be written to the output file, 
 but now also to the command line
-* Make sure to use a comma as a separator in doubles on the command line
 * Options p and h both don't need a value, they are just given like -p and -h without a value
 
 
