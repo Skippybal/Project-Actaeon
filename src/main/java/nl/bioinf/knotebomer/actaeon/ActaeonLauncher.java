@@ -26,10 +26,15 @@ public class ActaeonLauncher {
             if (inputFile != null) {
                 String fileType = optionProvider.getInputFileExtention();
 
-                if (fileType.equals("csv")) {
-                    inputHandler = new CSVHandler();
-                } else {
-                    inputHandler = new ArffHandler();
+                switch (fileType){
+                    case "csv":
+                        inputHandler = new CSVHandler();
+                        break;
+                    case "arff":
+                        inputHandler = new ArffHandler();
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + fileType);
                 }
 
                 instances = inputHandler.readFile(inputFile);
