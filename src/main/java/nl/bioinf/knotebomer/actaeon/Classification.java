@@ -9,7 +9,7 @@ import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 
-public class Classifier {
+public class Classification {
     private RandomForest sterolPresentModel;
     private RandomForest tailClassifierModel;
     private LMT sterolConcentrationModel;
@@ -17,7 +17,7 @@ public class Classifier {
     private Instances scaledInstancesLMT;
     private Instances labeledInstances;
 
-    public Classifier() {
+    public Classification() {
         loadModel();
     }
 
@@ -100,9 +100,9 @@ public class Classifier {
         Attribute sterolConcentration = new Attribute("sterol.conc", sterolConcentrationValues);
 
         //Standardize the instances
-        MinMax minMax = new MinMax();
-        Instances scaledData = minMax.minMaxer(instances);
-        System.out.println(scaledData);
+        Normalization normalization = new Normalization();
+        Instances scaledData = normalization.normalize(instances);
+        //System.out.println(scaledData);
 
         //Build a special dataset for the LMT tree classification
         Instances scaledDataLMT = new Instances(scaledData);
