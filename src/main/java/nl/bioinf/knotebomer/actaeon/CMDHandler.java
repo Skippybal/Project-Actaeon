@@ -12,7 +12,7 @@ public class CMDHandler implements  FileHandler<Map<String, Double>, String>{
     /**
      * Read input from command line
      * @param input, map with membrane characteristic and value
-     * @return
+     * @return Instances object of the input values
      */
     @Override
     public Instances readFile(Map<String, Double> input) {
