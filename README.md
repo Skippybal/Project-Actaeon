@@ -5,12 +5,20 @@ and then predicts certain membrane components using machine learning algorithms.
 
 ## Table of content
 
+- [Project description](#project-description)
 - [Installation](#installation)
     * [Prerequisites](#prerequisites)
     * [Dependencies](#dependencies)
 - [Input file specifications](#Input-file-specifications)
 - [Arguments](#arguments)
 - [Contact](#contact)
+
+## Project description
+This project is a java wrapper for three weka models. 
+There are two RandomForest models and one LMT model. 
+The two RandomForest model predict whether a sterol is present in the membrane and the 
+type of tails in the lipids of the membrane. 
+The LMT model predicts the sterol concentration in the membrane.
 
 ## Installation
 To install the program, simply pull this repo and use the following 
