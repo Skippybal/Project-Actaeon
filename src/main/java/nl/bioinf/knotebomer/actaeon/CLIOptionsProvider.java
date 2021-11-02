@@ -37,9 +37,9 @@ public class CLIOptionsProvider implements OptionProvider{
             verify();
         } catch (ParseException e) {
             System.err.println("Something went wrong while parsing " + e.getMessage());
-            //HelpFormatter formatter = new HelpFormatter();
-            //formatter.printHelp( "ant", options );
-            // e.printStackTrace();
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp( "ant", options );
+             //e.printStackTrace();
         }
     }
 

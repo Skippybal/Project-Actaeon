@@ -2,12 +2,9 @@ package nl.bioinf.knotebomer.actaeon;
 
 import weka.core.Attribute;
 import weka.core.DenseInstance;
-import weka.core.Instance;
 import weka.core.Instances;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CMDHandler implements  FileHandler<Map<String, Double>, String>{

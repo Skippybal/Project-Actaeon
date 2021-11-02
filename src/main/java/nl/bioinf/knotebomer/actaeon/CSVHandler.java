@@ -2,8 +2,6 @@ package nl.bioinf.knotebomer.actaeon;
 
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.ArffLoader;
-import weka.core.converters.ArffSaver;
 import weka.core.converters.CSVLoader;
 import weka.core.converters.CSVSaver;
 

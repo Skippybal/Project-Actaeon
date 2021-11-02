@@ -1,6 +1,5 @@
 package nl.bioinf.knotebomer.actaeon;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public interface OptionProvider {

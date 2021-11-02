@@ -4,8 +4,6 @@ import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Normalize;
 
-import java.io.IOException;
-
 public class MinMax {
 
     public Instances minMaxer(Instances instances) throws Exception {

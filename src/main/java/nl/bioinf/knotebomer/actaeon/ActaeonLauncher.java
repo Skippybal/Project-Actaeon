@@ -1,11 +1,6 @@
 package nl.bioinf.knotebomer.actaeon;
 
 import weka.core.Instances;
-import org.apache.commons.io.FilenameUtils;
-
-import java.awt.*;
-import java.io.IOException;
-import java.util.HashMap;
 
 public class ActaeonLauncher {
     public static void main(String[] args) {
