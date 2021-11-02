@@ -26,16 +26,11 @@ public class ActaeonLauncher {
             if (inputFile != null) {
                 String fileType = optionProvider.getInputFileExtention();
 
-                switch (fileType){
-                    case "csv":
-                        inputHandler = new CSVHandler();
-                        break;
-                    case "arff":
-                        inputHandler = new ArffHandler();
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + fileType);
-                }
+                inputHandler = switch (fileType) {
+                    case "csv" -> new CSVHandler();
+                    case "arff" -> new ArffHandler();
+                    default -> throw new IllegalStateException("Unexpected value: " + fileType);
+                };
 
                 instances = inputHandler.readFile(inputFile);
             } else if (optionProvider.getCharacteristics() != null){
@@ -45,8 +40,8 @@ public class ActaeonLauncher {
                 throw new IllegalArgumentException("No valid arguments found");
             }
 
-            Classifier classifier = new Classifier();
-            Instances labeled = classifier.classifyInstances(instances);
+            Classification classification = new Classification();
+            Instances labeled = classification.classifyInstances(instances);
             if (printToCommandLine) {
                 CMDHandler cmdHandler = new CMDHandler();
                 cmdHandler.writeFile(labeled, "");
