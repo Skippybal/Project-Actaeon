@@ -12,6 +12,12 @@ import java.io.IOException;
 
 public class CSVHandler implements FileHandler<String, String> {
 
+    /**
+     * Read a .csv input file
+     * @param filePath, path to input file
+     * @return Instances object with instances from the input file
+     * @throws IOException
+     */
     @Override
     public Instances readFile(String filePath) throws IOException {
         CSVLoader loader = new CSVLoader();
@@ -21,6 +27,12 @@ public class CSVHandler implements FileHandler<String, String> {
         return instances;
     }
 
+    /**
+     * Write results to .csv file
+     * @param labeledData Instances object with the results
+     * @param outputPath, specified output file location
+     * @throws IOException
+     */
     @Override
     public void writeFile(Instances labeledData, String outputPath) throws IOException {
         CSVSaver saver = new CSVSaver();

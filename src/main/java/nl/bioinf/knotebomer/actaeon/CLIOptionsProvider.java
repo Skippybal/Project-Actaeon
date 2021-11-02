@@ -14,11 +14,19 @@ public class CLIOptionsProvider implements OptionProvider{
     private Boolean printToCommandLine = false;
     private final Map<String, Double> input = new HashMap<>();
 
+    /**
+     * Parse the command line arguments and verify them
+     * @param args from the command line
+     */
     public CLIOptionsProvider(String[] args){
         init();
         parseArgs(args);
     }
 
+    /**
+     * Parse the command line arguments
+     * @param args from the command line
+     */
     private void parseArgs(String[] args) {
         CommandLineParser parser = new DefaultParser();
         try {
@@ -40,6 +48,9 @@ public class CLIOptionsProvider implements OptionProvider{
         formatter.printHelp( "ActaeonLauncher.jar [options]", options );
     }
 
+    /**
+     * Define possible command line arguments
+     */
     private void init() {
         this.options = new Options();
         options.addOption(new Option("f", "infile",
@@ -65,6 +76,10 @@ public class CLIOptionsProvider implements OptionProvider{
                 false, "Prints the help"));
     }
 
+    /**
+     * Verify command line input
+     * @throws ParseException
+     */
     private void verify() throws ParseException {
         if (cmd.hasOption('p')) {
             this.printToCommandLine = true;
