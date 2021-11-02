@@ -16,18 +16,26 @@ public class CMDHandler implements  FileHandler<Map<String, Double>, String>{
      */
     @Override
     public Instances readFile(Map<String, Double> input) {
+
+//        String[] attributeNames = {"APL", "thickness", "bending", "tilt", "zorder", "compress"};
         ArrayList<Attribute> attributes = new ArrayList<>(2);
-        attributes.add(new Attribute("APL"));
-        attributes.add(new Attribute("thickness"));
-        attributes.add(new Attribute("bending"));
-        attributes.add(new Attribute("tilt"));
-        attributes.add(new Attribute("zorder"));
-        attributes.add(new Attribute("compress"));
+
+        String[] attributeNames = {"APL", "thickness", "bending", "tilt", "zorder", "compress"};
+        for (String name : attributeNames){
+            attributes.add(new Attribute(name));
+        }
+//        attributes.add(new Attribute("APL"));
+//        attributes.add(new Attribute("thickness"));
+//        attributes.add(new Attribute("bending"));
+//        attributes.add(new Attribute("tilt"));
+//        attributes.add(new Attribute("zorder"));
+//        attributes.add(new Attribute("compress"));
         Instances instances = new Instances("Temp", attributes, 0);
 
 
         double[] instanceValues = {input.get("APL"), input.get("thickness"), input.get("bending"), input.get("tilt"), input.get("zorder"), input.get("compress")};
         instances.add(new DenseInstance(1.0, instanceValues));
+        System.out.println(instances);
 
 
         return instances;
