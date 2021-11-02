@@ -68,7 +68,6 @@ public class Classifier {
             //String clsLabelSterolConcentration = instances.classAttribute().value((int)labelSterolConcentration);
             labeledInstances.instance(i).setClassValue(labelSterolConcentration);
         }
-        System.out.println(labeledInstances);
         return labeledInstances;
     }
 
@@ -103,6 +102,7 @@ public class Classifier {
         //Standardize the instances
         MinMax minMax = new MinMax();
         Instances scaledData = minMax.minMaxer(instances);
+        System.out.println(scaledData);
 
         //Build a special dataset for the LMT tree classification
         Instances scaledDataLMT = new Instances(scaledData);
