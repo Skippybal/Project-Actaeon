@@ -1,8 +1,11 @@
 package nl.bioinf.knotebomer.actaeon;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+import org.apache.commons.io.IOUtils;
 import weka.classifiers.trees.LMT;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
@@ -17,6 +20,9 @@ public class Classification {
     private Instances scaledInstancesLMT;
     private Instances labeledInstances;
 
+    /**
+     * Load the models when the class is constructed
+     */
     public Classification() {
         loadModel();
     }
@@ -31,9 +37,17 @@ public class Classification {
             String tailModelLocation = "models/RandomForest_Tails.model";
             String sterolConcentrationModelLocation = "models/LMT_Sterol_Concentration.model";
 
-            this.sterolPresentModel = (RandomForest) SerializationHelper.read(new FileInputStream(sterolPresentModelLocation));
-            this.tailClassifierModel = (RandomForest) SerializationHelper.read(new FileInputStream(tailModelLocation));
-            this.sterolConcentrationModel = (LMT) SerializationHelper.read(new FileInputStream(sterolConcentrationModelLocation));
+            InputStream isSterolPresentModel = getClass().getClassLoader().getResourceAsStream(sterolPresentModelLocation);
+            InputStream isTailClassifierModel = getClass().getClassLoader().getResourceAsStream(tailModelLocation);
+            InputStream isSterolConcentrationModel = getClass().getClassLoader().getResourceAsStream(sterolConcentrationModelLocation);
+
+            this.sterolPresentModel = (RandomForest) SerializationHelper.read(isSterolPresentModel);
+            this.tailClassifierModel = (RandomForest) SerializationHelper.read(isTailClassifierModel);
+            this.sterolConcentrationModel = (LMT) SerializationHelper.read(isSterolConcentrationModel);
+
+            isSterolPresentModel.close();
+            isTailClassifierModel.close();
+            isSterolConcentrationModel.close();
 
         } catch (Exception e){
             e.printStackTrace();
