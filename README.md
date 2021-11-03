@@ -96,6 +96,10 @@ In the case of ``.arff`` the file must contain the following attributes, in this
 * @attribute compress numeric
 ```
 
+**IMPORTANT**
+
+* Rows with missing data are automatically removed from the input file.
+
 ## Contact
 
 * K. Notebomer
