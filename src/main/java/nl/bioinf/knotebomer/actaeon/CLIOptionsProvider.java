@@ -108,19 +108,6 @@ public class CLIOptionsProvider implements OptionProvider{
                 & cmd.hasOption('b') & cmd.hasOption('i')
                 & cmd.hasOption('z') & cmd.hasOption('c')){
             try {
-                //ystem.out.println(Double.parseDouble(cmd.getOptionValue('a').replace(",", ".")));
-
-//                String aplStr = cmd.getOptionValue('a').replace(",", ".");
-//                String thicknessStr = cmd.getOptionValue('t').replace(",", ".");
-//                String bendingStr = cmd.getOptionValue('b').replace(",", ".");
-//                String tiltStr = cmd.getOptionValue('i').replace(",", ".");
-//                String zorederStr = cmd.getOptionValue('z').replace(",", ".");
-//                String comperssibilityStr = cmd.getOptionValue('c').replace(",", ".");
-
-                //System.out.println(Double.parseDouble(cmd.getOptionValue('a')));
-                //System.out.println("g");
-
-
                 double apl = Double.parseDouble(cmd.getOptionValue('a').replace(",", "."));
                 double thickness =Double.parseDouble(cmd.getOptionValue('t').replace(",", "."));
                 double bending = Double.parseDouble(cmd.getOptionValue('b').replace(",", "."));
