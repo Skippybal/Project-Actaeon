@@ -31,8 +31,10 @@ command to run the program. Of course, you will need to add your own arguments.
 git pull https://github.com/Skippybal/Project-Actaeon.git
 ```
 
+After pulling the git, you can now build the project using gradle and make a shadowJar. 
+This jar will be created under build\libs\actaeon-1.0-SNAPSHOT-all.jar. To run the created jar use the following command:
 ```
-java -jar ActaeonLauncher [options]
+java -jar .\build\libs\actaeon-1.0-SNAPSHOT-all.jar [options]
 ```
 
 ### Prerequisites
