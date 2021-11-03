@@ -11,7 +11,6 @@ public class ActaeonLauncher {
 
     }
 
-
     /**
      * Start the program
      * @param optionProvider, provider of options
@@ -31,7 +30,6 @@ public class ActaeonLauncher {
                     case "arff" -> new ArffHandler();
                     default -> throw new IllegalStateException("Unexpected value: " + fileType);
                 };
-
                 instances = inputHandler.readFile(inputFile);
             } else if (optionProvider.getCharacteristics() != null){
                     CMDHandler cmdHandler = new CMDHandler();
