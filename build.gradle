@@ -28,17 +28,13 @@ dependencies {
 
 jar {
     manifest {
-        attributes "Main-Class": "nl.bioinf.knotebomer.actaeon"
+        attributes "Main-Class": "nl.bioinf.knotebomer.actaeon.ActaeonLauncher"
     }
-
-//    from {
-//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-//    }
 }
 
 shadowJar {
     manifest {
-        attributes "Main-Class": "nl.bioinf.WekaRunner"
+        attributes "Main-Class": "nl.bioinf.knotebomer.actaeon.ActaeonLauncher"
     }
 }
 
