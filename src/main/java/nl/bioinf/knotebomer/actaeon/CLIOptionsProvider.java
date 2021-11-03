@@ -43,6 +43,9 @@ public class CLIOptionsProvider implements OptionProvider{
         }
     }
 
+    /**
+     * Print help of the commons CLI
+     */
     private void printHelp() {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp( "ActaeonLauncher.jar [options]", options );
