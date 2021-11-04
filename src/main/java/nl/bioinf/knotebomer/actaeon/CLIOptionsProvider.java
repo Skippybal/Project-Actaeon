@@ -3,6 +3,8 @@ package nl.bioinf.knotebomer.actaeon;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ public class CLIOptionsProvider implements OptionProvider{
      * Parse the command line arguments and verify them
      * @param args from the command line
      */
-    public CLIOptionsProvider(String[] args){
+    public CLIOptionsProvider(String[] args) throws ParseException {
         init();
         parseArgs(args);
     }
@@ -27,7 +29,7 @@ public class CLIOptionsProvider implements OptionProvider{
      * Parse the command line arguments
      * @param args from the command line
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(String[] args) throws ParseException {
         CommandLineParser parser = new DefaultParser();
         try {
             this.cmd = parser.parse(options, args);
@@ -36,10 +38,16 @@ public class CLIOptionsProvider implements OptionProvider{
             }
             verify();
         } catch (ParseException e) {
-            System.err.println("Something went wrong while parsing " + e.getMessage());
+            /*
+            If an exception is found, print the message and trow the exception again,
+            so it bubbles up to main and stops the program.
+            This is cleaner than using a System.exit(1).
+            Catching the exception here too makes sure we know that the exception is a ParseException.
+             */
+            System.err.println("Something went wrong while parsing: " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "ant", options );
-             //e.printStackTrace();
+            formatter.printHelp( "ant", options);
+            throw e;
         }
     }
 
@@ -95,10 +103,13 @@ public class CLIOptionsProvider implements OptionProvider{
                 throw new ParseException("Invalid output file type " + outputFileType);
             }
         }
-        //System.out.println(cmd.hasOption("-f"));
+
         if (cmd.hasOption("f")) {
             String outputFileType = FilenameUtils.getExtension(cmd.getOptionValue('f'));
             if (outputFileType.equals("csv") | outputFileType.equals("arff")){
+                if (Files.notExists(Paths.get(cmd.getOptionValue('f')))){
+                    throw new ParseException("File " + cmd.getOptionValue('f') + " does not exist");
+                }
                 this.filePath = cmd.getOptionValue('f');
             } else {
                 throw new ParseException("Invalid input file type " + outputFileType);

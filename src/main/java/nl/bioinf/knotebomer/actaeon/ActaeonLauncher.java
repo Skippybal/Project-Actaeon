@@ -5,9 +5,18 @@ import weka.core.Instances;
 public class ActaeonLauncher {
     public static void main(String[] args) {
 
-        ActaeonLauncher launcher = new ActaeonLauncher();
-        OptionProvider optionProvider = new CLIOptionsProvider(args);
-        launcher.start(optionProvider);
+        try {
+            ActaeonLauncher launcher = new ActaeonLauncher();
+            OptionProvider optionProvider = new CLIOptionsProvider(args);
+            launcher.start(optionProvider);
+        } catch (Exception e) {
+            /*
+            If there is and exception print the stacktrace,
+            not the cleanest for end users.
+            But user-friendliness is not the main concern here.
+             */
+            e.printStackTrace();
+        }
 
     }
 
