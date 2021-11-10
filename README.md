@@ -9,8 +9,9 @@ and then predicts certain membrane components using machine learning algorithms.
 - [Installation](#installation)
     * [Prerequisites](#prerequisites)
     * [Dependencies](#dependencies)
-- [Input file specifications](#Input-file-specifications)
 - [Arguments](#arguments)
+    * [Example command](#example-command)
+- [File specification](#file-specifications)
 - [Contact](#contact)
 
 ## Project description
@@ -34,8 +35,9 @@ git pull https://github.com/Skippybal/Project-Actaeon.git
 After pulling the git, you can now build the project using gradle and make a shadowJar. 
 This jar will be created under build\libs\actaeon-1.0-SNAPSHOT-all.jar. To run the created jar use the following 
 command (this works on Windows):
+
 ```
-java -jar .\build\libs\actaeon-1.0-SNAPSHOT-all.jar [options]
+java -jar ./build/libs/actaeon-1.0-SNAPSHOT-all.jar [options]
 ```
 
 ### Prerequisites
@@ -72,11 +74,28 @@ This is to prevent overwriting issues in the output
 but now also to the command line
 * Options p and h both don't need a value, they are just given like -p and -h without a value
 
+### Example command
+This is and example of a command that can be used to test the project. The command can be run after creating
+a shadowJar with gradle. This command will use the dat from the data/dataframe_all_sims3.csv file in the data 
+folder from this repo. The results will be written to data/output.csv(default) and will also be written to the
+command line.
+```
+java -jar ./build/libs/actaeon-1.0-SNAPSHOT-all.jar -f data/dataFrame_all_sims3.csv -p
+```
 
-## Input file specifications
-The input file needs to be either ``.csv`` or ``.arff``. **The order of the columns is important.**
+This is an example of how to use the program with input from the command line. Here the output is the same as 
+the previous example.
 
-In the case of ``.csv`` the file must contain the following columns, in this specific order:
+```
+java -jar ./build/libs/actaeon-1.0-SNAPSHOT-all.jar -a 0.736911 -t 3.628973 -b 10.0802 -i 14.7578 -z 0.175499 -c 24.18218 -p
+```
+
+
+## File specifications
+The input and output file both needs to be either ``.csv`` or ``.arff``. 
+**The order of the columns in the input file is important.**
+
+In the case of ``.csv`` the input file must contain the following columns, in this specific order:
 ```
 * APL
 * thickness
@@ -86,7 +105,7 @@ In the case of ``.csv`` the file must contain the following columns, in this spe
 * compress
 ```
 
-In the case of ``.arff`` the file must contain the following attributes, in this specific order:
+In the case of ``.arff`` the input file must contain the following attributes, in this specific order:
 ```
 * @attribute APL numeric
 * @attribute thickness numeric
