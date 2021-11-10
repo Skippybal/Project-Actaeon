@@ -2,9 +2,12 @@ package nl.bioinf.knotebomer.actaeon;
 
 import weka.core.Attribute;
 import weka.core.DenseInstance;
+import weka.core.Instance;
 import weka.core.Instances;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.Map;
 
 public class CMDHandler{
@@ -37,7 +40,25 @@ public class CMDHandler{
      * @param labeledData Instances object with the results
      */
     public void writeCommandLine(Instances labeledData) {
-        System.out.println(labeledData);
+
+        int numAttributes = labeledData.numAttributes();
+
+        for (int i = 0; i < numAttributes; i++) {
+            System.out.println("Attribute " + i + " = " + labeledData.attribute(i));
+        }
+        System.out.println("Label indices = 6, 7, 8");
+
+        System.out.println();
+
+        Enumeration<Instance> instanceEnumeration = labeledData.enumerateInstances();
+        while (instanceEnumeration.hasMoreElements()) {
+            Instance instance = instanceEnumeration.nextElement();
+            double[] instanceArray = instance.toDoubleArray();
+            double[] instanceValues = Arrays.copyOfRange(instanceArray, 0, 5);
+            String[] instanceLabelsString = Arrays.copyOfRange(instance.toString().split(","), 6, 9);
+
+            System.out.println("Instance: " + Arrays.toString(instanceValues) + ", Classified as: " + Arrays.toString(instanceLabelsString));
+        }
 
     }
 }
