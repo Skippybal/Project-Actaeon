@@ -7,15 +7,14 @@ import weka.core.Instances;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class CMDHandler implements  FileHandler<Map<String, Double>, String>{
+public class CMDHandler{
 
     /**
      * Read input from command line
      * @param input, map with membrane characteristic and value
      * @return Instances object of the input values
      */
-    @Override
-    public Instances readFile(Map<String, Double> input) {
+    public Instances readCommandLine(Map<String, Double> input) {
 
         ArrayList<Attribute> attributes = new ArrayList<>(2);
 
@@ -36,10 +35,8 @@ public class CMDHandler implements  FileHandler<Map<String, Double>, String>{
     /**
      * Write output to command line
      * @param labeledData Instances object with the results
-     * @param outputPath, specified output file location
      */
-    @Override
-    public void writeFile(Instances labeledData, String outputPath) {
+    public void writeCommandLine(Instances labeledData) {
         System.out.println(labeledData);
 
     }

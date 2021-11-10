@@ -8,7 +8,7 @@ import weka.core.converters.CSVSaver;
 import java.io.File;
 import java.io.IOException;
 
-public class CSVHandler implements FileHandler<String, String> {
+public class CSVHandler implements FileHandler {
 
     /**
      * Read a .csv input file

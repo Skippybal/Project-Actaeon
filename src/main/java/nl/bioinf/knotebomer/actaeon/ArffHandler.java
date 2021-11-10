@@ -8,7 +8,7 @@ import weka.core.converters.ArffSaver;
 import java.io.File;
 import java.io.IOException;
 
-public class ArffHandler implements FileHandler<String, String>{
+public class ArffHandler implements FileHandler {
 
     /**
      * Read a .arff file

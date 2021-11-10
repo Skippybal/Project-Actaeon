@@ -4,7 +4,7 @@ import weka.core.Instances;
 
 import java.io.IOException;
 
-public interface FileHandler<T, T2> {
+public interface FileHandler {
 
     /**
      * Read the given input
@@ -12,7 +12,7 @@ public interface FileHandler<T, T2> {
      * @return Instances object containing the data
      * @throws IOException
      */
-    Instances readFile(T input) throws IOException;
+    Instances readFile(String input) throws IOException;
 
     /**
      * Write results to file
@@ -20,5 +20,5 @@ public interface FileHandler<T, T2> {
      * @param outputPath, specified output file location
      * @throws IOException
      */
-    void writeFile(Instances labeledData, T2 outputPath) throws IOException;
+    void writeFile(Instances labeledData, String outputPath) throws IOException;
 }

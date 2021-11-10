@@ -20,14 +20,14 @@ public interface OptionProvider {
      * This can be used to create the right filehandler
      * @return input file extension
      */
-    String getInputFileExtention();
+    String getInputFileExtension();
 
     /**
      * Get extension of the given output file
      * This can be used to create the right filehandler
      * @return output file extension
      */
-    String getOutputFileExtention();
+    String getOutputFileExtension();
 
     /**
      * Get option to print results to the command line
