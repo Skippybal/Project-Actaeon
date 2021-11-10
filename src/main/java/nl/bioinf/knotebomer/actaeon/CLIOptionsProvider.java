@@ -46,7 +46,7 @@ public class CLIOptionsProvider implements OptionProvider{
              */
             System.err.println("Something went wrong while parsing: " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "ant", options);
+            formatter.printHelp( "java -jar actaeon-1.0-SNAPSHOT-all.jar [options]", options);
             throw e;
         }
     }
@@ -89,12 +89,15 @@ public class CLIOptionsProvider implements OptionProvider{
 
     /**
      * Verify command line input
-     * @throws ParseException
+     * @throws ParseException, an exception found while parsing
      */
     private void verify() throws ParseException {
+        // Check print to command line
         if (cmd.hasOption('p')) {
             this.printToCommandLine = true;
         }
+
+        // Check for output file option
         if (cmd.hasOption('o')) {
             String outputFileType = FilenameUtils.getExtension(cmd.getOptionValue('o'));
             if (outputFileType.equals("csv") | outputFileType.equals("arff")){
@@ -104,6 +107,10 @@ public class CLIOptionsProvider implements OptionProvider{
             }
         }
 
+        /*
+        Check for input file
+        If no input file was found, check for single command from the command line
+         */
         if (cmd.hasOption("f")) {
             String outputFileType = FilenameUtils.getExtension(cmd.getOptionValue('f'));
             if (outputFileType.equals("csv") | outputFileType.equals("arff")){
@@ -114,6 +121,7 @@ public class CLIOptionsProvider implements OptionProvider{
             } else {
                 throw new ParseException("Invalid input file type " + outputFileType);
             }
+
 
         } else if (cmd.hasOption('a') & cmd.hasOption('t')
                 & cmd.hasOption('b') & cmd.hasOption('i')
@@ -174,12 +182,12 @@ public class CLIOptionsProvider implements OptionProvider{
     }
 
     @Override
-    public String getInputFileExtention() {
+    public String getInputFileExtension() {
         return FilenameUtils.getExtension(filePath);
     }
 
     @Override
-    public String getOutputFileExtention() {
+    public String getOutputFileExtension() {
         return FilenameUtils.getExtension(outPath);
     }
 
