@@ -45,8 +45,11 @@ public class Classification {
             this.tailClassifierModel = (RandomForest) SerializationHelper.read(isTailClassifierModel);
             this.sterolConcentrationModel = (LMT) SerializationHelper.read(isSterolConcentrationModel);
 
+            assert isSterolPresentModel != null;
             isSterolPresentModel.close();
+            assert isTailClassifierModel != null;
             isTailClassifierModel.close();
+            assert isSterolConcentrationModel != null;
             isSterolConcentrationModel.close();
 
         } catch (Exception e){
