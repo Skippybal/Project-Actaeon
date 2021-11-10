@@ -54,7 +54,7 @@ public class CMDHandler{
         while (instanceEnumeration.hasMoreElements()) {
             Instance instance = instanceEnumeration.nextElement();
             double[] instanceArray = instance.toDoubleArray();
-            double[] instanceValues = Arrays.copyOfRange(instanceArray, 0, 5);
+            double[] instanceValues = Arrays.copyOfRange(instanceArray, 0, 6);
             String[] instanceLabelsString = Arrays.copyOfRange(instance.toString().split(","), 6, 9);
 
             System.out.println("Instance: " + Arrays.toString(instanceValues) + ", Classified as: " + Arrays.toString(instanceLabelsString));
