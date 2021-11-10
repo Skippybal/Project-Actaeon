@@ -1,11 +1,8 @@
 package nl.bioinf.knotebomer.actaeon;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import org.apache.commons.io.IOUtils;
 import weka.classifiers.trees.LMT;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;

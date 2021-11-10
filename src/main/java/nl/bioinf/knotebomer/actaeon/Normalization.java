@@ -4,9 +4,7 @@ import weka.core.Instances;
 import weka.core.converters.CSVLoader;
 import weka.filters.unsupervised.attribute.Normalize;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.Objects;
 
 
 public class Normalization {
