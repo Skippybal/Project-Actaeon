@@ -5,6 +5,7 @@ import weka.core.converters.CSVLoader;
 import weka.filters.unsupervised.attribute.Normalize;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Objects;
 
 
@@ -19,11 +20,10 @@ public class Normalization {
     public Instances normalize(Instances instances) throws Exception {
 
         // Load training instances from the resources
-        ClassLoader classLoader = getClass().getClassLoader();
-        File trainingDataFile = new File(Objects.requireNonNull(classLoader.getResource("data/dataFrame_all_sims.csv")).getFile());
+        InputStream is = this.getClass().getResourceAsStream("/data/dataFrame_all_sims.csv");
 
         CSVLoader loader = new CSVLoader();
-        loader.setSource(trainingDataFile);
+        loader.setSource(is);
         Instances trainingInstances = loader.getDataSet();
 
         Normalize filter = new Normalize();
