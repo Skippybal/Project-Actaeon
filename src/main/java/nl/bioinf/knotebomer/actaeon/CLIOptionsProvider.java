@@ -123,9 +123,9 @@ public class CLIOptionsProvider implements OptionProvider{
             }
 
 
-        } else if (cmd.hasOption('a') & cmd.hasOption('t')
-                & cmd.hasOption('b') & cmd.hasOption('i')
-                & cmd.hasOption('z') & cmd.hasOption('c')){
+        } else if (cmd.hasOption('a') && cmd.hasOption('t')
+                && cmd.hasOption('b') && cmd.hasOption('i')
+                && cmd.hasOption('z') && cmd.hasOption('c')){
             try {
                 double apl = Double.parseDouble(cmd.getOptionValue('a').replace(",", "."));
                 double thickness =Double.parseDouble(cmd.getOptionValue('t').replace(",", "."));
@@ -143,7 +143,7 @@ public class CLIOptionsProvider implements OptionProvider{
                 if (bending < 0) {
                     throw new ParseException("Number is below zero: " + bending);
                 }
-                if (tilt < 0 | tilt >= 360) {
+                if (tilt < 0 || tilt >= 360) {
                     throw new ParseException("Not a valid tilt angle: " + tilt);
                 }
                 if (zorder < 0) {
